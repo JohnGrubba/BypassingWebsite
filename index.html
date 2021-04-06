@@ -124,8 +124,20 @@
         bypass(url);
       }
     function bypass(url) {
+      lin = btoa(url);
+      linke = lin.replace("/", "$")
+      link = encodeURIComponent(linke) 
+      console.log(link)
       document.getElementById("h").innerHTML = "Started Bypassing..."
-      document.getElementById("h").innerHTML = "Bypassing done!"
+      var xhr = new XMLHttpRequest();
+      xhr.open('GET', 'https://WEBSITE-API.jjtv.repl.co/bypass/'+link, true);
+
+      xhr.onload = function () {
+        document.getElementById("h").innerHTML = xhr.responseText
+      };
+
+      xhr.send(null);
+      
     }
     </script>
     <script>
